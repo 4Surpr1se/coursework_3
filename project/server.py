@@ -4,6 +4,14 @@ from flask_restx import Api
 
 from project.setup_db import db
 from project.views import genres_ns
+from project.config import DevelopmentConfig
+from project.views.directors import director_ns
+from project.views.movies import movie_ns
+
+
+
+
+
 
 api = Api(
     authorizations={
@@ -27,5 +35,16 @@ def create_app(config_obj):
 
     # Регистрация эндпоинтов
     api.add_namespace(genres_ns)
+    api.add_namespace(director_ns)
+    api.add_namespace(movie_ns)
 
     return app
+
+
+app = create_app(DevelopmentConfig())
+app.debug = True
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+    # host = "localhost", port = 10001,

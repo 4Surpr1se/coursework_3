@@ -1,6 +1,5 @@
 from project.dao.models.base import BaseMixin
 from project.setup_db import db
-from sqlalchemy.orm import relationship
 
 
 class Movie(BaseMixin, db.Model):
